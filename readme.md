@@ -47,7 +47,44 @@ You can access the paper [clicking here!](#)
 
 
 ## Datasets
-//todo
+
+### Medical Imaging Datasets
+
+| Dataset | Modality | Structures / Tasks | Size | Download Link |
+|--------|----------|---------------------|------|----------------|
+| **LUNA16** | Thoracic CTs | Lungs | 888 | [TCIA](https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI), [LUNA16](https://luna16.grand-challenge.org/Data/) |
+| **StructSeg2019 Thorax** | Thoracic CTs | Lungs, Spinal cord, Esophagus, Heart, Trachea | 50 | [Link](https://structseg2019.grand-challenge.org/) |
+| **StructSeg2019 Head and Neck** | Head and Neck CTs | Multiple organs (22 classes) | 50 | [Link](https://structseg2019.grand-challenge.org/) |
+| **OSIC** | Thoracic CTs | Lungs | 99 (after filtering) | [Kaggle](https://www.kaggle.com/c/osic-pulmonary-fibrosis-progression) |
+| **CHAOS Challenge** | Abdominal CTs, T1-DUAL & T2-SPIR MRIs | Liver, Kidneys, Spleen | 40 CTs + 120 MRIs | [CHAOS](https://chaos.grand-challenge.org/Download/), [Zenodo](https://zenodo.org/record/3431873#.X7IPsJ1KiV4) |
+| **Multi-organ Abdominal CT** | Abdominal CTs | 13 organs | 90 | [Zenodo](https://zenodo.org/record/1169361#.X7IOsZ1KiV4) |
+| **Decathlon Liver** | Abdominal CTs | Liver, Tumors | 63 (train) + 32 (test) | [Link](http://medicaldecathlon.com/) |
+| **Decathlon Spleen** | Abdominal CTs | Spleen | 41 (train) + 20 (test) | [Link](http://medicaldecathlon.com/) |
+| **Decathlon Pancreas** | Abdominal CTs | Pancreas | 282 (train) + 139 (test) | [Link](http://medicaldecathlon.com/) |
+| **Decathlon Heart** | Cardiac MRI | Heart | 20 (train) + 10 (test) | [Link](http://medicaldecathlon.com/) |
+| **LiTS** | Abdominal CTs | Liver, Lesions | 130 | [Codalab](https://competitions.codalab.org/competitions/17094#participate) |
+| **QUBIQ Pancreas** | Abdominal CTs | Pancreas | 58 | [Link](https://qubiq21.grand-challenge.org/) |
+| **KiTS21** | Abdominal CTs | Kidney, Tumors | 300 | [Challenge](https://kits21.grand-challenge.org/), [GitHub](https://github.com/neheller/kits21) |
+| **COVID-19 Lung Segmentation** | Thoracic CTs | Lungs | 20 | [Zenodo](https://zenodo.org/record/3757476#.YSJtgJpKiV4) |
+| **PROMISE12** | T2W Prostate MRI | Prostate | 50 | [Link](https://promise12.grand-challenge.org/) |
+| **FeTA** | T2W Brain MRI | Brain tissues (7 classes) | 80 | [Link](https://feta-2021.grand-challenge.org/Home/) |
+| **CTPEL** | Pelvis CTs | ? | 90 | [Link](https://datahub.aida.scilifelab.se/10.23698/aida/ctpel) |
+| **VESSEL12** | Thoracic CTs | Lungs | 23 | [Kaggle](https://www.kaggle.com/andrewmvd/lung-vessel-segmentation) |
+| **T2w Kidney MRI** | T2W MRI | Kidney | 100 | [Zenodo](https://zenodo.org/record/5153568) |
+| **Hippocampus Segmentation (DRYAD)** | T1W & T2W | Hippocampus | 25 | [Zenodo](https://zenodo.org/record/4934690) |
+| **OpenMind SSL** | MRI | Head and Neck | 114,000 | [ArXiv](https://arxiv.org/abs/2412.17041) |
+| **KiTS2023** | CT | Kidney, Renal Tumors, Cysts | 489 (train) + 110 (test) | [Challenge](https://kits-challenge.org/kits23/) |
+| **FLARE 2023** | CT | 13 abdominal organs + tumor | 2200 (train) + 100 (val) + 400 (test) | [ArXiv](https://arxiv.org/abs/2408.12534) |
+| **BraTS2024** | mpMRI | Brain Gliomas | 2200 | [ArXiv](https://arxiv.org/abs/2405.18368) |
+| **OrganMNIST3D** | CT | Abdominal | 1742 | [MedMNIST](https://medmnist.com/) |
+| **NoduleMNIST3D** | CT | Chest | 1633 | [MedMNIST](https://medmnist.com/) |
+| **AdrenalMNIST3D** | CT | Abdominal | 1584 | [MedMNIST](https://medmnist.com/) |
+| **FractureMNIST3D** | CT | Chest | 137 | [MedMNIST](https://medmnist.com/) |
+| **VesselMNIST3D** | MRA | Brain | 1908 | [MedMNIST](https://medmnist.com/) |
+| **SynapseMNIST3D** | Electron Microscopy | - | 1759 | [MedMNIST](https://medmnist.com/) |
+
+
+
 ## Explainability
 | Tecnique Type              | Method                                     | Link |
 |----------------------------|--------------------------------------------|------|
