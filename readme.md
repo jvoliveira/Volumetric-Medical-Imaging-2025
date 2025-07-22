@@ -49,7 +49,19 @@ You can access the paper [clicking here!](#)
 ## Datasets
 //todo
 ## Explainability
-//todo
+| Type                       | Méthod                  | Link |
+|----------------------------|-------------------------|------|
+| Gradient-Based Methods     | CAM                     | [Link](https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf) |
+| Gradient-Based Methods     | GRAD-CAM                | [Link](https://arxiv.org/abs/1611.07450) |
+| Gradient-Based Methods     | GRAD-CAM++              | [Link](https://ieeexplore.ieee.org/abstract/document/8354201?casa_token=RcVqWxhdj6YAAAAA:ZjG8XTOLdEBBRFUGxZ87Mn5_sr5_fxdcSkChfyFkWC-BwC4g3tcJjKTBj6u5mjTMFGZQn5V9gg) |
+| Gradient-Based Methods     | Guided Backpropagation  | [Link](https://arxiv.org/abs/1412.6806) |
+| Perturbation-Based Methods | LIME                    | [Link](https://dl.acm.org/doi/abs/10.1145/2939672.2939778) |
+| Perturbation-Based Methods | Occlusion               | [Link](https://www.cell.com/fulltext/S0092-8674(18)30154-5) |
+| Perturbation-Based Methods | Integrated Gradients    | [Link](https://www.sciencedirect.com/science/article/pii/S0161642018315756) |
+| Perturbation-Based Methods | SHAP                    | [Link](https://proceedings.neurips.cc/paper_files/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf) |
+| Decomposition-Based Methods| LRP                     | [Link](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0130140) |
+| Perturbation-Based Methods | TCAV                    | [Link](https://proceedings.mlr.press/v80/kim18d/kim18d.pdf) |
+
 
 ## Foundational
 ### Segmentation
