@@ -1,6 +1,6 @@
-# Towards Trustworthy AI in 3D Medical Imaging: A Deep Learning Perspective
+# Strategies for Deep Learning in Volumetric Medical Imaging: A Survey
 
-> This repository gathers the base content used in the tutorial **Towards Trustworthy AI in 3D Medical Imaging: A Deep Learning Perspective**.
+> This repository gathers the base content used in the tutorial "**Strategies for Deep Learning in Volumetric Medical Imaging: A Survey**".
 
 ## Paper
 This survey aims to review the main advances in the application of DL to three-dimensional medical data, with an emphasis on the inherent challenges of this domain and emerging strategies to overcome these limitations. 
@@ -9,7 +9,7 @@ Authors: João Vitor S. de Oliveira, Danilo F. Vieira, Mateus Pinto da Silva, Da
 Affiliation: Universidade Federal de Viçosa – UFV  
 Contact: `joao.silva.oliveira@ufv.br, danilo.f.vieira@ufv.br, mateus.p.silva@ufv.br, daniel.louzada@ufv.br, marcosh.ribeiro@ufv.br, hugo.n.oliveira@ufv.br`
 
-You can access the paper [clicking here!](#)
+You can access the paper [clicking here!](#) `(available soon)`
 
 ## Table of Contents
 
@@ -17,6 +17,9 @@ You can access the paper [clicking here!](#)
 2. [Datasets](#datasets)
 3. [Explainability](#explainability)
 4. [Foundational](#foundational)
+
+## Graphical Abstract
+![Graphical Abstract](timeline.png "Timeline")
 
 ## Architectures
 
