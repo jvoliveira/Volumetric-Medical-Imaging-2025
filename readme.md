@@ -60,7 +60,7 @@ You can access the paper [clicking here!](#) `(available soon)`
 | **StructSeg2019 Head and Neck** | Head and Neck CTs | Multiple organs (22 classes) | 50 | [Link](https://structseg2019.grand-challenge.org/) |
 | **OSIC** | Thoracic CTs | Lungs | 99 (after filtering) | [Kaggle](https://www.kaggle.com/c/osic-pulmonary-fibrosis-progression) |
 | **CHAOS Challenge** | Abdominal CTs, T1-DUAL & T2-SPIR MRIs | Liver, Kidneys, Spleen | 40 CTs + 120 MRIs | [CHAOS](https://chaos.grand-challenge.org/Download/), [Zenodo](https://zenodo.org/record/3431873#.X7IPsJ1KiV4) |
-| **Multi-organ Abdominal CT** | Abdominal CTs | 13 organs | 90 | [Zenodo](https://zenodo.org/record/1169361#.X7IOsZ1KiV4) |
+| **Multi-organ Abdominal CT** | Abdominal CTs | Spleen, Right kidney (BTCV), Left kidney, Gallbladder, Esophagus, Liver, Stomach, Aorta (BTCV), Inferior vena cava (BTCV), Portal vein and splenic vein (BTCV), Pancreas, Right adrenal gland (BTCV), Left adrenal gland (BTCV), Duodenum | 90 | [Zenodo](https://zenodo.org/record/1169361#.X7IOsZ1KiV4) |
 | **Decathlon Liver** | Abdominal CTs | Liver, Tumors | 63 (train) + 32 (test) | [Link](http://medicaldecathlon.com/) |
 | **Decathlon Spleen** | Abdominal CTs | Spleen | 41 (train) + 20 (test) | [Link](http://medicaldecathlon.com/) |
 | **Decathlon Pancreas** | Abdominal CTs | Pancreas | 282 (train) + 139 (test) | [Link](http://medicaldecathlon.com/) |
@@ -71,7 +71,7 @@ You can access the paper [clicking here!](#) `(available soon)`
 | **COVID-19 Lung Segmentation** | Thoracic CTs | Lungs | 20 | [Zenodo](https://zenodo.org/record/3757476#.YSJtgJpKiV4) |
 | **PROMISE12** | T2W Prostate MRI | Prostate | 50 | [Link](https://promise12.grand-challenge.org/) |
 | **FeTA** | T2W Brain MRI | Brain tissues (7 classes) | 80 | [Link](https://feta-2021.grand-challenge.org/Home/) |
-| **CTPEL** | Pelvis CTs | ? | 90 | [Link](https://datahub.aida.scilifelab.se/10.23698/aida/ctpel) |
+| **CTPEL** | Pelvis CTs | - | 90 | [Link](https://datahub.aida.scilifelab.se/10.23698/aida/ctpel) |
 | **VESSEL12** | Thoracic CTs | Lungs | 23 | [Kaggle](https://www.kaggle.com/andrewmvd/lung-vessel-segmentation) |
 | **T2w Kidney MRI** | T2W MRI | Kidney | 100 | [Zenodo](https://zenodo.org/record/5153568) |
 | **Hippocampus Segmentation (DRYAD)** | T1W & T2W | Hippocampus | 25 | [Zenodo](https://zenodo.org/record/4934690) |
