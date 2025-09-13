@@ -18,8 +18,6 @@ You can access the paper [clicking here!](#) `(available soon)`
 3. [Explainability](#explainability)
 4. [Foundational](#foundational)
 
-## Graphical Abstract
-![Graphical Abstract](timeline.png "Timeline")
 
 ## Architectures
 
