@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategies for Deep Learning in Volumetric Medical Imaging: A Survey</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --dark-gray: #353535;
+            --red-accent: #901812;
+            --gold-accent: #D1A705;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: var(--dark-gray);
+            background: #fafafa;
+        }
+
+        .navbar {
+            background: #fff !important;
+            border-bottom: 1px solid #e0e0e0;
+            box-shadow: none;
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--dark-gray) !important;
+        }
+
+        .nav-link:hover {
+            color: var(--red-accent) !important;
+        }
+
+        .nav-link.active {
+            color: var(--red-accent) !important;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+
+        .hero-section {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .article-title {
+            color: var(--dark-gray);
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .journal-info {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .badge-custom {
+            background: var(--red-accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+        }
+
+        .doi-badge {
+            background: var(--gold-accent);
+            color: var(--dark-gray);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .doi-badge:hover {
+            background: #b8940a;
+            color: var(--dark-gray);
+        }
+
+        .section-card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .section-card:hover {
+            border-color: var(--gold-accent);
+        }
+
+        .section-title {
+            color: var(--dark-gray);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold-accent);
+            padding-bottom: 0.5rem;
+        }
+        
+
+        .author-card {
+            border-bottom: 1px solid #f0f0f0;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .author-card:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--dark-gray);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .author-email {
+            color: var(--red-accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .author-email:hover {
+            text-decoration: underline;
+            color: var(--red-accent);
+        }
+
+        .table {
+            font-size: 0.9rem;
+        }
+
+        .table th {
+            background: #f8f9fa;
+            color: var(--dark-gray);
+            font-weight: 600;
+            border-bottom: 2px solid var(--gold-accent);
+        }
+
+        .table td {
+            border-color: #f0f0f0;
+        }
+
+        .table-link {
+            color: var(--red-accent);
+            text-decoration: none;
+        }
+
+        .table-link:hover {
+            text-decoration: underline;
+            color: var(--red-accent);
+        }
+
+        .keyword-tag {
+            background: #f5f5f5;
+            color: var(--dark-gray);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+            margin: 0.2rem;
+            display: inline-block;
+        }
+
+        .material-item {
+            border-bottom: 1px solid #f0f0f0;
+            padding: 1rem 0;
+        }
+
+        .material-item:last-child {
+            border-bottom: none;
+        }
+
+        .material-link {
+            color: var(--red-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .material-link:hover {
+            text-decoration: underline;
+            color: var(--red-accent);
+        }
+
+        .material-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .timeline-img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #e0e0e0;
+            margin: 1rem 0;
+        }
+
+        .author-photo{
+            max-width: 200px;
+            border-radius: 200px;
+        }
+
+        footer {
+            background: #fff;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#authors">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#architectures">Architectures</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#datasets">Datasets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#explainability">Explainability</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#foundational">Foundational Models</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 mx-auto text-center">
+                    <h1 class="article-title">Strategies for Deep Learning in Volumetric </br>Medical Imaging: A Survey</h1>
+                    <div class="journal-info">
+                        <strong>Tutorial Survey</strong> • SIBGRAPI • 2025
+                        <p>This survey aims to review the main advances in the application of DL to three-dimensional medical data, with an emphasis on the inherent challenges of this domain and emerging strategies to overcome these limitations.</p>
+                    </div>
+                    <div class="mb-3">
+                        <a href="#"><span class="badge badge-custom">Access Paper (soon)</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Abstract Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="section-card">
+                    <h2 class="section-title">Abstract</h2>
+                    <p>Deep learning has transformed medical image analysis. However, building effective models for volumetric data, such as CT, MRI, and PET scans, presents a new set of challenges. These include high computational costs, limited annotated datasets, and the need for architectures that can process volumetric data directly. This survey provides a comprehensive overview of recent advances in deep neural network architectures specifically designed for 3D medical imaging. We analyze the progression from early 3D CNNs to hybrid and Transformer-based models, highlighting their structural innovations and applicability. In addition, we review training strategies such as supervised pretraining, self-supervised learning, and the development of general-purpose 3D foundational models. Also, a comprehensive overview of 3D medical imaging datasets and their associated tasks is presented in the supplementary materials, highlighting the diverse clinical objectives that deep learning models can support across healthcare and diagnostic applications.  A dedicated section addresses the emerging field of explainability in volumetric contexts, emphasizing the limitations of adapting 2D explainability-focused tools and the importance of 3D-native explanation frameworks. We conclude by outlining the key trends in the field, including the growing availability of multiple and functionally diverse datasets; novel architectural designs tailored for volumetric learning; the transition from convolutional to attention-based models; increased reliance on transfer learning from both labeled and unlabeled data; and the emergence of 3D-native XAI methods that provide clinically meaningful and trustworthy explanations.</p>
+                    
+                    <div class="mt-3">
+                        <h6>Keywords:</h6>
+                        <span class="keyword-tag">Deep Learning</span>
+                        <span class="keyword-tag">3D Medical Imaging</span>
+                        <span class="keyword-tag">Self-Supervised Learning</span>
+                        <span class="keyword-tag">Explainable AI</span>
+                        <span class="keyword-tag">Volumetric Segmentation</span>
+                    </div>
+
+                    <div class="mt-4">
+                        <h6>Graphical Abstract:</h6>
+                        <img src="./imgs/timeline.png" class="timeline-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Authors Section -->
+        <div class="row" id="authors">
+            <div class="col-12">
+                <div class="section-card">
+                    <h2 class="section-title">Authors</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="author-card">
+                                <img class="author-photo" src="./imgs/joao.png" alt="" srcset="">
+                                <div class="author-name">João Vitor S. de Oliveira</div>
+                                <div class="text-muted mb-2">Universidade Federal de Viçosa – UFV</div>
+                                <a href="mailto:joao.silva.oliveira@ufv.br" class="author-email">joao.silva.oliveira@ufv.br</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="author-card">
+                                <img class="author-photo" src="./imgs/danilo.jpeg" alt="" srcset="">
+                                <div class="author-name">Danilo F. Vieira</div>
+                                <div class="text-muted mb-2">Universidade Federal de Viçosa – UFV</div>
+                                <a href="mailto:danilo.f.vieira@ufv.br" class="author-email">danilo.f.vieira@ufv.br</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="author-card">
+                                <img class="author-photo" src="./imgs/mateus.jpeg" alt="" srcset="">
+                                <div class="author-name">Mateus Pinto da Silva</div>
+                                <div class="text-muted mb-2">Universidade Federal de Viçosa – UFV</div>
+                                <a href="mailto:mateus.p.silva@ufv.br" class="author-email">mateus.p.silva@ufv.br</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="author-card">
+                                <img class="author-photo" src="./imgs/daniel.jpg" alt="" srcset="">
+                                <div class="author-name">Daniel L. Fernandes</div>
+                                <div class="text-muted mb-2">Universidade Federal de Viçosa – UFV</div>
+                                <a href="mailto:daniel.louzada@ufv.br" class="author-email">daniel.louzada@ufv.br</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="author-card">
+                                <img class="author-photo" src="./imgs/marcos.jpg" alt="" srcset="">
+                                <div class="author-name">Marcos H. F. Ribeiro</div>
+                                <div class="text-muted mb-2">Universidade Federal de Viçosa – UFV</div>
+                                <a href="mailto:marcosh.ribeiro@ufv.br" class="author-email">marcosh.ribeiro@ufv.br</a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="author-card">
+                                <img class="author-photo" src="./imgs/hugo.jpeg" alt="" srcset="">
+                                <div class="author-name">Hugo N. Oliveira</div>
+                                <div class="text-muted mb-2">Universidade Federal de Viçosa – UFV</div>
+                                <a href="mailto:hugo.n.oliveira@ufv.br" class="author-email">hugo.n.oliveira@ufv.br</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architectures Section -->
+        <div class="row" id="architectures">
+            <div class="col-12">
+                <div class="section-card">
+                    <h2 class="section-title">Architectures</h2>
+                    <h3 class="section-title">Segmentation</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Architecture</th>
+                                    <th>Type</th>
+                                    <th>Year</th>
+                                    <th>Tasks</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>3D U-Net: Learning Dense Volumetric Segmentation from Sparse Annotation</td>
+                                    <td><span class="architecture-tag">3D U-Net</span></td>
+                                    <td>Conv. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2016</span></td>
+                                    <td><span class="task-tag">Kidney</span></td>
+                                    <td><a href="https://arxiv.org/pdf/1606.06650" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation</td>
+                                    <td><span class="architecture-tag">VNet</span></td>
+                                    <td>Conv. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2016</span></td>
+                                    <td><span class="task-tag">Prostate Organ</span></td>
+                                    <td><a href="https://arxiv.org/pdf/1606.04797" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>On the Compactness, Efficiency, and Representation of 3D Convolutional Networks: Brain Parcellation as a Pretext Task</td>
+                                    <td><span class="architecture-tag">HighRes3DNet</span></td>
+                                    <td>Conv. (FCN-like)</td>
+                                    <td><span class="year-badge">2017</span></td>
+                                    <td><span class="task-tag">Brain Parcellation</span></td>
+                                    <td><a href="https://arxiv.org/pdf/1707.01992" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3D Densely Convolutional Networks for Volumetric Segmentation</td>
+                                    <td><span class="architecture-tag">3D-DenseSeg</span></td>
+                                    <td>Conv. (FCN-like)</td>
+                                    <td><span class="year-badge">2017</span></td>
+                                    <td><span class="task-tag">Brain Tissue</span></td>
+                                    <td><a href="https://arxiv.org/pdf/1709.03199" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>med3d: transfer learning for 3d medical image analysis</td>
+                                    <td><span class="architecture-tag">Med3D</span></td>
+                                    <td>Conv. (FCN-like)</td>
+                                    <td><span class="year-badge">2019</span></td>
+                                    <td><span class="task-tag">Brain Tumor</span> <span class="task-tag">Hippocampus Tissue</span> <span class="task-tag">Prostate Tissue</span> <span class="task-tag">Liver Organ</span> <span class="task-tag">Heart Tissue</span> <span class="task-tag">Pancreas Organ/Tissue</span> <span class="task-tag">Vessel Tissue/Tumour</span> <span class="task-tag">Spleen Organ</span></td>
+                                    <td><a href="https://arxiv.org/pdf/1904.00625" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Efficient 3D Deep Learning Model for Medical Image Semantic Segmentation - ScienceDirect</td>
+                                    <td><span class="architecture-tag">3D-DenseUNet-569</span></td>
+                                    <td>Conv. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2021</span></td>
+                                    <td><span class="task-tag">Liver Organ and Tumor</span></td>
+                                    <td><a href="https://www.sciencedirect.com/science/article/pii/S1110016820305639" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>RA-UNet: A hybrid deep attention-aware network to extract liver and tumor in CT scans</td>
+                                    <td><span class="architecture-tag">RA-UNet</span></td>
+                                    <td>Hybrid (UNet Encoder-Decoder with Attention modules on skip connections)</td>
+                                    <td><span class="year-badge">2018</span></td>
+                                    <td><span class="task-tag">Liver Organ and Tumor</span></td>
+                                    <td><a href="https://arxiv.org/pdf/1811.01328" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>LCOV-NET: A LIGHTWEIGHT NEURAL NETWORK FOR COVID-19 PNEUMONIA LESION SEGMENTATION FROM 3D CT IMAGES</td>
+                                    <td><span class="architecture-tag">LCOV-Net</span></td>
+                                    <td>Hybrid (Conv. blocks with Attention and upsample with interpolation without transposed convs)</td>
+                                    <td><span class="year-badge">2021</span></td>
+                                    <td><span class="task-tag">COVID-19 lesions</span></td>
+                                    <td><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=9434023" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>TransBTS: Multimodal Brain Tumor Segmentation Using Transformer</td>
+                                    <td><span class="architecture-tag">TransBTS</span></td>
+                                    <td>Hybrid (Encoder-Decoder Conv. with Attention in the Bottleneck)</td>
+                                    <td><span class="year-badge">2021</span></td>
+                                    <td><span class="task-tag">Brain Tumor (BraTS)</span></td>
+                                    <td><a href="https://arxiv.org/pdf/2103.04430" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>CoTr: Efficiently Bridging CNN and Transformer for 3D Medical Image Segmentation</td>
+                                    <td><span class="architecture-tag">CoTr</span></td>
+                                    <td>Hybrid (Conv. Encoder, Transf. Encoder, Conv. Decoder)</td>
+                                    <td><span class="year-badge">2021</span></td>
+                                    <td><span class="task-tag">Beyond The Cranial Vault (BTCV)</span></td>
+                                    <td><a href="https://arxiv.org/pdf/2103.03024" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>UNETR: Transformers for 3D Medical Image Segmentation</td>
+                                    <td><span class="architecture-tag">UNETR</span></td>
+                                    <td>Transf. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2022</span></td>
+                                    <td><span class="task-tag">Beyond The Cranial Vault (BTCV)</span> <span class="task-tag">Medical Segm. Dec. (MSD)</span></td>
+                                    <td><a href="https://openaccess.thecvf.com/content/WACV2022/papers/Hatamizadeh_UNETR_Transformers_for_3D_Medical_Image_Segmentation_WACV_2022_paper.pdf" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>A Robust Volumetric Transformer for Accurate 3D Tumor Segmentation</td>
+                                    <td><span class="architecture-tag">VT-UNet</span></td>
+                                    <td>Transf. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2022</span></td>
+                                    <td><span class="task-tag">Brain Tumor (MSD, BraTS)</span></td>
+                                    <td><a href="https://arxiv.org/pdf/2111.13300" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>nnFormer: Interleaved Transformer for Volumetric Segmentation</td>
+                                    <td><span class="architecture-tag">nnFormer</span></td>
+                                    <td>Transf. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2023</span></td>
+                                    <td><span class="task-tag">Brain Tumor (BraTS)</span> <span class="task-tag">Multiorgan Abdominal CT Segmentation (Synapse)</span> <span class="task-tag">Cardiac Cavity Segmentation (ACDC)</span></td>
+                                    <td><a href="https://d1wqtxts1xzle7.cloudfront.net/116234574/2109-libre.pdf?1718978627=&response-content-disposition=inline%3B+filename%3DnnFormer_Interleaved_Transformer_for_Vol.pdf&Expires=1753120033&Signature=BEKOkpPgatS2yOM5YsL8TEBhaa4oHhZHqnh~-mh5atuUNqpd80cJsED1Pyeh3qf6Xzksz~ZHKeIx85YFiOKWrPln3DamlKF5zWrDBR~US9i7R-kIXNhTnuW6G36PB7oA7aAswIeANLd1O-4mkLdxx3-dYOBR5otu7ik3arWsEhJa6eCjFqr7O29HQrHyktfN9mYnnp~fhElq3K2MjzjJs99sQcSr-ukirKsak5JPSKbtBj0SWDzFdBEg5e7DD1JObLjepwgtKQGpSMuTc6ct8miSJ5Jr7lxoJ~8RJGvmRoejdcZiebUqisTw6Nqat9peNpqyJdJqxnFvV4z9MkGxYA__&Key-Pair-Id=APKAJLOHF5GGSLRBV4ZA" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>SegFormer3D: An Efficient Transformer for 3D Medical Image Segmentation</td>
+                                    <td><span class="architecture-tag">SegFormer3D</span></td>
+                                    <td>Transf. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2024</span></td>
+                                    <td><span class="task-tag">Brain Tumor (BraTS)</span> <span class="task-tag">Multiorgan Abdominal CT Segmentation (Synapse)</span> <span class="task-tag">Cardiac Cavity Segmentation (ACDC)</span></td>
+                                    <td><a href="https://openaccess.thecvf.com/content/CVPR2024W/DEF-AI-MIA/papers/Perera_SegFormer3D_An_Efficient_Transformer_for_3D_Medical_Image_Segmentation_CVPRW_2024_paper.pdf" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>HResFormer: Hybrid Residual Transformer for Volumetric Medical Image Segmentation</td>
+                                    <td><span class="architecture-tag">HResFormer</span></td>
+                                    <td>Transf. (Encoder-Decoder)</td>
+                                    <td><span class="year-badge">2025</span></td>
+                                    <td><span class="task-tag">Brain Tumor (Bakas et al. 2018)</span> <span class="task-tag">Multiorgan Abdominal CT Segmentation (Synapse)</span> <span class="task-tag">Cardiac Cavity Segmentation (ACDC)</span></td>
+                                    <td><a href="https://arxiv.org/pdf/2412.11458" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <h4 class="mt-4">Other Tasks</h4>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Architecture</th>
+                                    <th>Type</th>
+                                    <th>Year</th>
+                                    <th>Tasks</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>MedYOLO: A Medical Image Object Detection Framework</td>
+                                    <td><span class="architecture-tag">MedYOLO</span></td>
+                                    <td>Conv.</td>
+                                    <td><span class="year-badge">2024</span></td>
+                                    <td><span class="task-tag">Detection</span></td>
+                                    <td><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11612059/" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Datasets Section -->
+        <div class="row" id="datasets">
+            <div class="col-12">
+                <div class="section-card">
+                    <h2 class="section-title">Datasets</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Dataset</th>
+                                    <th>Modality</th>
+                                    <th>Structures / Tasks</th>
+                                    <th>Size</th>
+                                    <th>Download Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>LUNA16</strong></td>
+                                    <td>Thoracic CTs</td>
+                                    <td>Lungs</td>
+                                    <td>888</td>
+                                    <td><a href="https://wiki.cancerimagingarchive.net/display/Public/LIDC-IDRI" target="_blank">TCIA</a>, <a href="https://luna16.grand-challenge.org/Data/" target="_blank">LUNA16</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>StructSeg2019 Thorax</strong></td>
+                                    <td>Thoracic CTs</td>
+                                    <td>Lungs, Spinal cord, Esophagus, Heart, Trachea</td>
+                                    <td>50</td>
+                                    <td><a href="https://structseg2019.grand-challenge.org/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>StructSeg2019 Head and Neck</strong></td>
+                                    <td>Head and Neck CTs</td>
+                                    <td>Multiple organs (22 classes)</td>
+                                    <td>50</td>
+                                    <td><a href="https://structseg2019.grand-challenge.org/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OSIC</strong></td>
+                                    <td>Thoracic CTs</td>
+                                    <td>Lungs</td>
+                                    <td>99 (after filtering)</td>
+                                    <td><a href="https://www.kaggle.com/c/osic-pulmonary-fibrosis-progression" target="_blank">Kaggle</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CHAOS Challenge</strong></td>
+                                    <td>Abdominal CTs, T1-DUAL & T2-SPIR MRIs</td>
+                                    <td>Liver, Kidneys, Spleen</td>
+                                    <td>40 CTs + 120 MRIs</td>
+                                    <td><a href="https://chaos.grand-challenge.org/Download/" target="_blank">CHAOS</a>, <a href="https://zenodo.org/record/3431873#.X7IPsJ1KiV4" target="_blank">Zenodo</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Multi-organ Abdominal CT</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Spleen, Right kidney (BTCV), Left kidney, Gallbladder, Esophagus, Liver, Stomach, Aorta (BTCV), Inferior vena cava (BTCV), Portal vein and splenic vein (BTCV), Pancreas, Right adrenal gland (BTCV), Left adrenal gland (BTCV), Duodenum</td>
+                                    <td>90</td>
+                                    <td><a href="https://zenodo.org/record/1169361#.X7IOsZ1KiV4" target="_blank">Zenodo</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Decathlon Liver</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Liver, Tumors</td>
+                                    <td>63 (train) + 32 (test)</td>
+                                    <td><a href="http://medicaldecathlon.com/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Decathlon Spleen</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Spleen</td>
+                                    <td>41 (train) + 20 (test)</td>
+                                    <td><a href="http://medicaldecathlon.com/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Decathlon Pancreas</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Pancreas</td>
+                                    <td>282 (train) + 139 (test)</td>
+                                    <td><a href="http://medicaldecathlon.com/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Decathlon Heart</strong></td>
+                                    <td>Cardiac MRI</td>
+                                    <td>Heart</td>
+                                    <td>20 (train) + 10 (test)</td>
+                                    <td><a href="http://medicaldecathlon.com/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>LiTS</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Liver, Lesions</td>
+                                    <td>130</td>
+                                    <td><a href="https://competitions.codalab.org/competitions/17094#participate" target="_blank">Codalab</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>QUBIQ Pancreas</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Pancreas</td>
+                                    <td>58</td>
+                                    <td><a href="https://qubiq21.grand-challenge.org/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KiTS21</strong></td>
+                                    <td>Abdominal CTs</td>
+                                    <td>Kidney, Tumors</td>
+                                    <td>300</td>
+                                    <td><a href="https://kits21.grand-challenge.org/" target="_blank">Challenge</a>, <a href="https://github.com/neheller/kits21" target="_blank">GitHub</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>COVID-19 Lung Segmentation</strong></td>
+                                    <td>Thoracic CTs</td>
+                                    <td>Lungs</td>
+                                    <td>20</td>
+                                    <td><a href="https://zenodo.org/record/3757476#.YSJtgJpKiV4" target="_blank">Zenodo</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>PROMISE12</strong></td>
+                                    <td>T2W Prostate MRI</td>
+                                    <td>Prostate</td>
+                                    <td>50</td>
+                                    <td><a href="https://promise12.grand-challenge.org/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FeTA</strong></td>
+                                    <td>T2W Brain MRI</td>
+                                    <td>Brain tissues (7 classes)</td>
+                                    <td>80</td>
+                                    <td><a href="https://feta-2021.grand-challenge.org/Home/" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CTPEL</strong></td>
+                                    <td>Pelvis CTs</td>
+                                    <td>-</td>
+                                    <td>90</td>
+                                    <td><a href="https://datahub.aida.scilifelab.se/10.23698/aida/ctpel" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>VESSEL12</strong></td>
+                                    <td>Thoracic CTs</td>
+                                    <td>Lungs</td>
+                                    <td>23</td>
+                                    <td><a href="https://www.kaggle.com/andrewmvd/lung-vessel-segmentation" target="_blank">Kaggle</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>T2w Kidney MRI</strong></td>
+                                    <td>T2W MRI</td>
+                                    <td>Kidney</td>
+                                    <td>100</td>
+                                    <td><a href="https://zenodo.org/record/5153568" target="_blank">Zenodo</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Hippocampus Segmentation (DRYAD)</strong></td>
+                                    <td>T1W & T2W</td>
+                                    <td>Hippocampus</td>
+                                    <td>25</td>
+                                    <td><a href="https://zenodo.org/record/4934690" target="_blank">Zenodo</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OpenMind SSL</strong></td>
+                                    <td>MRI</td>
+                                    <td>Head and Neck</td>
+                                    <td>114,000</td>
+                                    <td><a href="https://arxiv.org/abs/2412.17041" target="_blank">ArXiv</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>KiTS2023</strong></td>
+                                    <td>CT</td>
+                                    <td>Kidney, Renal Tumors, Cysts</td>
+                                    <td>489 (train) + 110 (test)</td>
+                                    <td><a href="https://kits-challenge.org/kits23/" target="_blank">Challenge</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FLARE 2023</strong></td>
+                                    <td>CT</td>
+                                    <td>13 abdominal organs + tumor</td>
+                                    <td>2200 (train) + 100 (val) + 400 (test)</td>
+                                    <td><a href="https://arxiv.org/abs/2408.12534" target="_blank">ArXiv</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>BraTS2024</strong></td>
+                                    <td>mpMRI</td>
+                                    <td>Brain Gliomas</td>
+                                    <td>2200</td>
+                                    <td><a href="https://arxiv.org/abs/2405.18368" target="_blank">ArXiv</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>OrganMNIST3D</strong></td>
+                                    <td>CT</td>
+                                    <td>Abdominal</td>
+                                    <td>1742</td>
+                                    <td><a href="https://medmnist.com/" target="_blank">MedMNIST</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>NoduleMNIST3D</strong></td>
+                                    <td>CT</td>
+                                    <td>Chest</td>
+                                    <td>1633</td>
+                                    <td><a href="https://medmnist.com/" target="_blank">MedMNIST</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AdrenalMNIST3D</strong></td>
+                                    <td>CT</td>
+                                    <td>Abdominal</td>
+                                    <td>1584</td>
+                                    <td><a href="https://medmnist.com/" target="_blank">MedMNIST</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>FractureMNIST3D</strong></td>
+                                    <td>CT</td>
+                                    <td>Chest</td>
+                                    <td>137</td>
+                                    <td><a href="https://medmnist.com/" target="_blank">MedMNIST</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>VesselMNIST3D</strong></td>
+                                    <td>MRA</td>
+                                    <td>Brain</td>
+                                    <td>1908</td>
+                                    <td><a href="https://medmnist.com/" target="_blank">MedMNIST</a></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>SynapseMNIST3D</strong></td>
+                                    <td>Electron Microscopy</td>
+                                    <td>-</td>
+                                    <td>1759</td>
+                                    <td><a href="https://medmnist.com/" target="_blank">MedMNIST</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Explainability Section -->
+        <div class="row" id="explainability">
+            <div class="col-12">
+                <div class="section-card">
+                    <h2 class="section-title">Explainability</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Technique Type</th>
+                                    <th>Method</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Gradient-Based Methods</td>
+                                    <td>CAM (Class Activation Mapping)</td>
+                                    <td><a href="https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Gradient-Based Methods</td>
+                                    <td>Grad-CAM (Gradient-weighted Class Activation Mapping)</td>
+                                    <td><a href="https://arxiv.org/abs/1611.07450" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Gradient-Based Methods</td>
+                                    <td>Grad-CAM++ (Gradient-weighted Class Activation Mapping++)</td>
+                                    <td><a href="https://ieeexplore.ieee.org/abstract/document/8354201?casa_token=RcVqWxhdj6YAAAAA:ZjG8XTOLdEBBRFUGxZ87Mn5_sr5_fxdcSkChfyFkWC-BwC4g3tcJjKTBj6u5mjTMFGZQn5V9gg" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Gradient-Based Methods</td>
+                                    <td>Guided Backpropagation</td>
+                                    <td><a href="https://arxiv.org/abs/1412.6806" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perturbation-Based Methods</td>
+                                    <td>LIME (Local Interpretable Model-agnostic Explanations)</td>
+                                    <td><a href="https://dl.acm.org/doi/abs/10.1145/2939672.2939778" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perturbation-Based Methods</td>
+                                    <td>Occlusion</td>
+                                    <td><a href="https://www.cell.com/fulltext/S0092-8674(18)30154-5" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perturbation-Based Methods</td>
+                                    <td>Integrated Gradients</td>
+                                    <td><a href="https://www.sciencedirect.com/science/article/pii/S0161642018315756" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perturbation-Based Methods</td>
+                                    <td>SHAP (SHapley Additive exPlanations)</td>
+                                    <td><a href="https://proceedings.neurips.cc/paper_files/paper/2017/file/8a20a8621978632d76c43dfd28b67767-Paper.pdf" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Decomposition-Based Methods</td>
+                                    <td>LRP (Layer-wise Relevance Propagation)</td>
+                                    <td><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0130140" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Perturbation-Based Methods</td>
+                                    <td>TCAV (Testing with Concept Activation Vectors)</td>
+                                    <td><a href="https://proceedings.mlr.press/v80/kim18d/kim18d.pdf" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foundational Models Section -->
+        <div class="row" id="foundational">
+            <div class="col-12">
+                <div class="section-card">
+                    <h2 class="section-title">Foundational</h2>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Method</th>
+                                    <th>Year</th>
+                                    <th>Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>VISTA3D: A Unified Segmentation Foundation Model For 3D Medical Imaging</td>
+                                    <td><span class="architecture-tag">VISTA3D</span></td>
+                                    <td><span class="year-badge">2025</span></td>
+                                    <td><a href="https://openaccess.thecvf.com/content/CVPR2025/papers/He_VISTA3D_A_Unified_Segmentation_Foundation_Model_For_3D_Medical_Imaging_CVPR_2025_paper.pdf" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>SAM-Med3D: Towards General-purpose Segmentation Models for Volumetric Medical Images</td>
+                                    <td><span class="architecture-tag">SAM-Med3D</span></td>
+                                    <td><span class="year-badge">2023</span></td>
+                                    <td><a href="https://arxiv.org/pdf/2310.15161" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>BrainSegFounder: Towards 3D foundation models for neuroimage segmentation - ScienceDirect</td>
+                                    <td><span class="architecture-tag">BrainSegFounder</span></td>
+                                    <td><span class="year-badge">2024</span></td>
+                                    <td><a href="https://www.sciencedirect.com/science/article/pii/S1361841524002263" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>WeakMedSAM: Weakly-Supervised Medical Image Segmentation via SAM With Sub-Class Exploration and Prompt Affinity Mining</td>
+                                    <td><span class="architecture-tag">WeakMedSAM</span></td>
+                                    <td><span class="year-badge">2025</span></td>
+                                    <td><a href="https://www.webofscience.com/wos/woscc/full-record/WOS:001523480800030?AlertId=bd1375a1-bd11-4f92-93c0-44498427633f" target="_blank">Link</a></td>
+                                </tr>
+                                <tr>
+                                    <td>MedLSAM: Localize and segment anything model for 3D CT images - ScienceDirect</td>
+                                    <td><span class="architecture-tag">MedLSAM</span></td>
+                                    <td><span class="year-badge">2025</span></td>
+                                    <td><a href="https://www.sciencedirect.com/science/article/abs/pii/S1361841524002950" target="_blank">Link</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p>2025 - Strategies for Deep Learning in Volumetric Medical Imaging: A Survey</p>
+                    <p>Universidade Federal de Viçosa – UFV</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section[id], div[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
