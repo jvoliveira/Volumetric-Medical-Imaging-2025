@@ -1,0 +1,5 @@
+*.pth
+*.pt
+*.ckpt
+img_demo.png
+Deelesion_results/
